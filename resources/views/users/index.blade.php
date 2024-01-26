@@ -13,16 +13,16 @@
 
                 <div class="p-4 text-gray-500">
                     <table class="table-auto w-full">
-                        <thead class="text-left dark:text-gray-100">
+                        <thead class="dark:text-gray-100">
                             <tr>
-                                <th class="text-center">Nivel</th>
+                                <th class="">Nivel</th>
                                 <th class="p-4">Nome</th>
                                 <th >E-mail</th>
                                 <th >Data de Cadastro</th>
-                                <th class="text-center">Ações</th>
+                                <th class="">Ações</th>
                             </tr>
                         </thead>
-                        <tbody class="text-left dark:text-gray-100">
+                        <tbody class="text-center dark:text-gray-100">
                             @foreach ( $users as $user )
                                 <tr class="hover:text-gray-500 ">
                                     <td class="text-center">icone</td>
@@ -30,7 +30,7 @@
                                     <td >{{ $user->email }}</td>
                                     <td >{{ $user->created_at }}</td>
                                     <td class="text-center">
-                                        <a href="">Editar</a>
+                                        <a href="{{ route('user.edit', $user->id) }}">Editar</a>
                                     </td>
                                 </tr>
                             @endforeach
