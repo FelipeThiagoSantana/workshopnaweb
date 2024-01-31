@@ -19,4 +19,10 @@ class UserController extends Controller
             'user' => User::findOrFail($id)
         ]);
     }
+
+    public function update(Request $id)
+    {
+        User::findOrFail($id->id)->update($id->all());
+        return redirect()->route('user.index');
+    }
 }

@@ -12,19 +12,22 @@
                   <p >Editando o nével de acesso do usuário <strong>{{ $user->name }}</strong> </p>
                 </div>
                 <div class="p-6">
-                    <form action="" method="post">
+                    <form action="{{ route('user.update', $user->id) }}" method="post">
                         @csrf
                         @method('PUT')
 
                         <label for="level" class=" dark:text-gray-100">Selecione o nivel de acesso deste usuario</label><br>
                         <select name="level" required class="py-1 px-8 rounded">
-                            <option value=" " selected disabled>Selecione uma opção</option>
+                            <option value="" selected disabled>Selecione uma opção</option>
                             <option value="prof">Professor</option>
                             <option value="aluno">Aluno</option>
-                            <option value="Admin">Adminstrador</option>
+                            <option value="admin">Adminstrador</option>
                         </select>
-                            <br>
-                            <button type="button" class="btn btn-primary">Salvar</button>
+                        <br>
+                        <button type="submit" class=" bg-blue-900 text-white rounded py-2 px-2">
+                            Salvar
+                          </button>
+
                     </form>
                 </div>
                 </div>

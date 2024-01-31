@@ -19,19 +19,29 @@
                                 <th class="p-4">Nome</th>
                                 <th >E-mail</th>
                                 <th >Data de Cadastro</th>
-                                <th class="">Ações</th>
+                                @can('level')
+                                     <th class="">Ações</th>
+                                @endcan
+
                             </tr>
                         </thead>
                         <tbody class="text-center dark:text-gray-100">
                             @foreach ( $users as $user )
                                 <tr class="hover:text-gray-500 ">
-                                    <td class="text-center">icone</td>
+                                    <td class="text-center">
+                                        @if ($user->level == 'admin')
+                                        <i class="fa-solid fa-user" style="color: #fc0909;"></i>
+                                        @endif
+                                    </td>
                                     <td class="p-4">{{ $user->name }}</td>
                                     <td >{{ $user->email }}</td>
                                     <td >{{ $user->created_at }}</td>
+                                    @can('level')
                                     <td class="text-center">
                                         <a href="{{ route('user.edit', $user->id) }}">Editar</a>
                                     </td>
+                                    @endcan
+
                                 </tr>
                             @endforeach
                         </tbody>
